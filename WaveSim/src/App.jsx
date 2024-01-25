@@ -11,7 +11,9 @@ import MyComponent from "./Muiresponsive";
 import CombinedAll from "./HomeCards";
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContinuousTime from "./CT/ContinuousTime";
+import FourierTransform from "./CT/Ctft";
 import HomeCards from "./HomeCards";
+// import SmoothGraph from "./CT/graph";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
             <Routes>
               <Route path="/combinedAll" element={<HomeCards/>}/>
               <Route path="/continuousTime" element={<ContinuousTime/>}/>
+              <Route path="/continuousTime/Ctft" element={<FourierTransform/>}/>
+              {/* <Route path="/continuousTime/Ctft/graph" element={<SmoothGraph/>}/> */}
             </Routes>
         </Router>
         

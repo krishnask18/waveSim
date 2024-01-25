@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.suggestion-list {
+  list-style: radial-gradient();
+  padding: 0 25px;
+  margin: 5px;
+}
+
+.list1 li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+
+

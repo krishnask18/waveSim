@@ -8,19 +8,19 @@ function ContinuousTime()
   >
         <div className="card-hover" 
           onClick={()=>{
-            window.location="";
+            window.location="/continuousTime/Ctft";
                 }}>
           <Cardcomp
           width="267px"
-            bgim="linear-gradient(to bottom,rgba(76, 105, 152, 1), rgba(21, 47, 110,0.5)),url(../src/assets/DT_bg.jpg)"
+            bgim="linear-gradient(to bottom,rgba(120, 2, 6, 1), rgba(6, 17, 97,0.5)),url(../src/assets/ft.jpg)"
             title="Fourier Transform"
             description={
               <div style={{width:"240px"}}>
                 <div>
-                  {"\u25CF"} Interepretetion & visualisation of DTFT, DFT, {"\u0396"} Transform for discrete time & digital signals
+                  {"\u25CF"}  {"\u0396"} 
                 </div>
                 <div style={{transform:"translate(0px, 15px)"}}>
-                  {"\u25CF"} Various types of convolutions & animations for Discrete time signals
+                  {"\u25CF"}
                 </div>
               </div>
             }
@@ -33,7 +33,7 @@ function ContinuousTime()
                 }}>
           <Cardcomp
           width="267px"
-            bgim="linear-gradient(to bottom,rgba(122, 106, 85, 1), rgba(92, 68, 55, 0.5)),url(../src/assets/DT_gi.jpg)"
+            bgim="linear-gradient(to bottom,rgba(122, 106, 85, 1), rgba(92, 68, 55, 0.8)),url(../src/assets/fs.jpg)"
             title="Fourier Series Visualization"
             description={
               <div style={{width:"240px"}}>
@@ -53,7 +53,7 @@ function ContinuousTime()
                 }}>
           <Cardcomp
           width="267px"
-            bgim="linear-gradient(to bottom,rgba(103, 72, 110, 1), rgba(68, 15, 80, 0.5)),url(../src/assets/DT_bg.jpg)"
+            bgim="linear-gradient(to bottom,rgba(103, 72, 110, 1), rgba(68, 15, 80, 0.5)),url(../src/assets/Lt.jpg)"
             title="Laplace Transform"
             description={
               <div style={{width:"240px"}}>
@@ -73,7 +73,7 @@ function ContinuousTime()
                 }}>
           <Cardcomp
           width="267px"
-            bgim="linear-gradient(to bottom,rgba(81, 93, 69, 1), rgba(48, 70, 31, 0.5)),url(../src/assets/T_bgi.jpg)"
+            bgim="linear-gradient(to bottom,rgba(81, 93, 69, 1), rgba(48, 70, 31, 0.5)),url(../src/assets/convl.jpg)"
             title="Convolution Animation"
             description={
               <div style={{width:"240px"}}>
