@@ -7,7 +7,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-
+                Learning Electronics is basic Human Need
 1.continuous time signal
 ---> expression input, keyboard all possible functions, plots( abs, phase , real imag, time domain), laplace transform (3d plot), convolution with animation, standards signal (impulse,step,etc) plots.., fourier series animation
 
