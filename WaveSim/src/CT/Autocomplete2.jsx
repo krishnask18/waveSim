@@ -267,6 +267,7 @@ const AutoSuggestions = () => {
          onKeyDown={handleKeyDown}
         placeholder="Type a word..."
         style={{
+          boxShadow: "0px 2px 5px black",
           backgroundColor:"rgba(0, 0, 0, 0.2)",
           width: 930,
           color:"black",
@@ -288,6 +289,7 @@ const AutoSuggestions = () => {
                transform:"translate(35px,-10px)",
                fontFamily:"Poppins",
                fontSize:"20px",
+               boxShadow: "0px 3px 12px black",
                color:"white"}}>Send</Button>
 
 
@@ -355,13 +357,14 @@ const AutoSuggestions = () => {
           fontFamily:"Poppins",
           fontSize:"30px",
           color:"white",
-          float:"left"
-          // transform:"translate(-260px, 0px)"
+          float:"left",
+          transform:"translate(30px, 0px)"
         }}>
           Bounds : 
         </Typography>
           </div>
-        <div>
+        <div style={{          
+          transform: "translate(-250px, 0px)",}}>
         <TextField
         defaultValue="-inf"
         style={{
@@ -370,8 +373,23 @@ const AutoSuggestions = () => {
           width: 100,
           height:30, 
           fontFamily:"Poppins",
-          transform: "translate(0px, 0px)",
           display:"inline"
+        }}>
+        </TextField>
+        </div>
+        <div style={{          
+          // transform: "translate(-250px, 0px)",
+        }}>
+        <TextField
+        defaultValue="inf"
+        style={{
+          fontSize:"30px",
+          backgroundColor:"rgba(0, 0, 0, 0.2)",
+          width: 100,
+          height:30, 
+          fontFamily:"Poppins",
+          display:"inline",
+          float:"right"
         }}>
         </TextField>
         </div>
