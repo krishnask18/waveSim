@@ -267,7 +267,7 @@ const AutoSuggestions = () => {
          onKeyDown={handleKeyDown}
         placeholder="Type a word..."
         style={{
-          //backgroundColor:"whitesmoke",
+          backgroundColor:"rgba(0, 0, 0, 0.2)",
           width: 930,
           color:"black",
           fontFamily:"Kaushan Script",
@@ -282,10 +282,10 @@ const AutoSuggestions = () => {
                     
                 }
               })
-       }}style={{transform:"translate(0px,0px)", width:"90px",
-                height:"60px",
+       }}style={{width:"80px",
+                height:"55px",
                 backgroundColor:"rgba(20, 30, 35, 1)",
-               transform:"translate(15px,-9px)",
+               transform:"translate(35px,-10px)",
                fontFamily:"Poppins",
                fontSize:"20px",
                color:"white"}}>Send</Button>
@@ -293,13 +293,14 @@ const AutoSuggestions = () => {
 
                
       
+      
         <div >
       {suggestions.length > 0 && (
         <ul >
           
           <div className="all-list" style={{
             width:930,
-            transform:"translate(15px,-20px)",
+            transform:"translate(-35px,-20px)",
             overflowY:"scroll",
             visibility:false,
             backgroundColor:"rgba(20, 47, 53, 0.4)", 
@@ -341,8 +342,43 @@ const AutoSuggestions = () => {
        
       )}
        </div>
-      
        
+      <div>
+        <div style={{height:"60px"}}></div>
+        {suggestions.length==0 &&
+        (
+        <div >
+          
+          <div>
+          <Typography
+        style={{
+          fontFamily:"Poppins",
+          fontSize:"30px",
+          color:"white",
+          float:"left"
+          // transform:"translate(-260px, 0px)"
+        }}>
+          Bounds : 
+        </Typography>
+          </div>
+        <div>
+        <TextField
+        defaultValue="-inf"
+        style={{
+          fontSize:"30px",
+          backgroundColor:"rgba(0, 0, 0, 0.2)",
+          width: 100,
+          height:30, 
+          fontFamily:"Poppins",
+          transform: "translate(0px, 0px)",
+          display:"inline"
+        }}>
+        </TextField>
+        </div>
+        </div>
+        )}
+        
+      </div>
     </div>
   );
 };
