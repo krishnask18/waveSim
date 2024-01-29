@@ -94,7 +94,7 @@
 
 // export default AutoSuggestions;
 
-import { TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { color, style } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import "../index.css";
@@ -105,6 +105,7 @@ const AutoSuggestions = () => {
   const [currentLetter, setCurrentLetter] = useState("");
   const [currentWord, setCurrentWord] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [expression,setExpression]=useState("");
 
   const allSuggestions = [
     "impulse",
@@ -128,6 +129,7 @@ const AutoSuggestions = () => {
   ];
   const handleInputChange = (e) => {
     const value = e.target.value;
+    setExpression(value);
     setInputValue(value);
 
     // Extract the last word from the input value
@@ -203,36 +205,45 @@ const AutoSuggestions = () => {
   const handleKeyDown = (e) => {
     console.log(e.key);
 
-    if (e.key === "ArrowUp"&& highlightedIndex>0) {  
-      setHighlightedIndex(prevIndex=>prevIndex-1);     
-     // e.preventDefault();
-
-      //console.log("Down Press")
-      // setHighlightedIndex((prevIndex) =>
-      //   prevIndex < suggestions.length - 1 ? prevIndex + 1 : 0
-      // );
-      
-      // console.log(highlightedIndex + suggestions[highlightedIndex]);
-      // handleSuggestionClick(suggestions[highlightedIndex]);
-      
-    } else if (e.key==="ArrowDown" && highlightedIndex<suggestions.length-1) {
-     
-      setHighlightedIndex(prevIndex=>prevIndex+1);     
-
-     // e.preventDefault();
-      // //console.log("up  Press")
-      // setHighlightedIndex((prevIndex) =>
-      // prevIndex > 0 ? prevIndex - 1 : suggestions.length - 1
-      // );
-      // console.log(highlightedIndex + suggestions[highlightedIndex]);
-      // handleSuggestionClick(suggestions[highlightedIndex]);
-    } else if (e.key === "Enter"&& highlightedIndex>=0) {
-      window.open(suggestions[highlightedIndex]);
-      // if (highlightedIndex !== -1) {
-      //   console.log(highlightedIndex + suggestions[highlightedIndex]);
-      //   handleSuggestionClick(suggestions[highlightedIndex], true);
-      // }
+    if(highlightedIndex<suggestions.length)
+    {
+      if (e.key === "ArrowUp"&& highlightedIndex>0) {  
+        setHighlightedIndex(prevIndex=>prevIndex-1);     
+       // e.preventDefault();
+  
+        //console.log("Down Press")
+        // setHighlightedIndex((prevIndex) =>
+        //   prevIndex < suggestions.length - 1 ? prevIndex + 1 : 0
+        // );
+        
+        // console.log(highlightedIndex + suggestions[highlightedIndex]);
+        // handleSuggestionClick(suggestions[highlightedIndex]);
+        
+      } else if (e.key==="ArrowDown" && highlightedIndex<suggestions.length-1) {
+       
+        setHighlightedIndex(prevIndex=>prevIndex+1);     
+  
+       // e.preventDefault();
+        // //console.log("up  Press")
+        // setHighlightedIndex((prevIndex) =>
+        // prevIndex > 0 ? prevIndex - 1 : suggestions.length - 1
+        // );
+        // console.log(highlightedIndex + suggestions[highlightedIndex]);
+        // handleSuggestionClick(suggestions[highlightedIndex]);
+      } else if (e.key === "Enter"&& highlightedIndex>=0) {
+        handleSuggestionClick(suggestions[highlightedIndex], true)
+        //suggestions[highlightedIndex];
+        // if (highlightedIndex !== -1) {
+        //   console.log(highlightedIndex + suggestions[highlightedIndex])  ;
+        //   handleSuggestionClick(suggestions[highlightedIndex], true);
+        // }
+      }
     }
+    else
+    {
+      setHighlightedIndex(-1);
+    }
+  
   }; 
 
   // useEffect(() => {
@@ -245,10 +256,10 @@ const AutoSuggestions = () => {
   //   return () => {
   //     window.removeEventListener("keydown", handleArrowNavigation);
   //   };
-  // }, [highlightedIndex]);
+  // }, [highlightedIndex]); 
 
   return (
-    <div>
+    <div >
       <TextField
       
         value={inputValue}
@@ -262,7 +273,25 @@ const AutoSuggestions = () => {
           fontFamily:"Kaushan Script",
           transform: "translate(25px, -10px)",
         }}
+        
       ><Typography style={{fontFamily:"Poppins"}}></Typography></TextField>
+       <Button  onClick={()=>{
+              fetch("",{
+                method:"POST",
+                body:{
+                    
+                }
+              })
+       }}style={{transform:"translate(0px,0px)", width:"90px",
+                height:"60px",
+                backgroundColor:"rgba(20, 30, 35, 1)",
+               transform:"translate(15px,-9px)",
+               fontFamily:"Poppins",
+               fontSize:"20px",
+               color:"white"}}>Send</Button>
+
+
+               
       
         <div >
       {suggestions.length > 0 && (
@@ -270,11 +299,11 @@ const AutoSuggestions = () => {
           
           <div className="all-list" style={{
             width:930,
-            transform:"translate(8px,0)",
-            border: "5px solid rgba(255, 255, 255, .5)",
+            transform:"translate(15px,-20px)",
             overflowY:"scroll",
             visibility:false,
-            backgroundColor:"brown", 
+            backgroundColor:"rgba(20, 47, 53, 0.4)", 
+            boxShadow: "0px 3px 25px rgba(0, 0, 0, 1)",
             height:"200px",
             borderBottomRightRadius: 20,
             borderBottomLeftRadius: 20,
@@ -290,11 +319,11 @@ const AutoSuggestions = () => {
                 key={index}
                 style={{
                   color: "white",
-                  width: 910,
+                  width: 870,
                   transform:"translate(-3px,0)",
                   backgroundColor: "",
                 
-               
+
                  }}
                 onClick={() => handleSuggestionClick(suggestion, true)}
                 
@@ -312,6 +341,8 @@ const AutoSuggestions = () => {
        
       )}
        </div>
+      
+       
     </div>
   );
 };

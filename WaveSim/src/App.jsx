@@ -14,6 +14,8 @@ import ContinuousTime from "./CT/ContinuousTime";
 import FourierTransform from "./CT/Ctft";
 import HomeCards from "./HomeCards";
 import LineGraph from "./CT/graph2";
+import DesmosComponent from "./CT/apiDesmos";
+
 
 
 function App() {
@@ -27,7 +29,8 @@ function App() {
               <Route path="/combinedAll" element={<HomeCards/>}/>
               <Route path="/continuousTime" element={<ContinuousTime/>}/>
               <Route path="/continuousTime/Ctft" element={<FourierTransform/>}/>
-              <Route path="/continuousTime/Ctft/graph" element={<LineGraph/>}/>
+              <Route path="/continuousTime/Ctft/graph2" element={<LineGraph/>}/>
+              <Route path="/continuousTime/Ctft/Graph" element ={<DesmosComponent/>}/>
             </Routes>
         </Router>
         

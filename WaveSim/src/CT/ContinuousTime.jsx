@@ -73,7 +73,7 @@ function ContinuousTime()
                 }}>
           <Cardcomp
           width="267px"
-            bgim="linear-gradient(to bottom,rgba(81, 93, 69, 1), rgba(48, 70, 31, 0.5)),url(../src/assets/convl.jpg)"
+            bgim="linear-gradient(to bottom,rgba(60, 100, 69, 1), rgba(40, 50, 31, 0.5)),url(../src/assets/convlu.jpg)"
             title="Convolution Animation"
             description={
               <div style={{width:"240px"}}>
