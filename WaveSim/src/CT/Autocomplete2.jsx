@@ -267,7 +267,8 @@ const AutoSuggestions = () => {
          onKeyDown={handleKeyDown}
         placeholder="Type a word..."
         style={{
-          //backgroundColor:"whitesmoke",
+          boxShadow: "0px 2px 5px black",
+          backgroundColor:"rgba(0, 0, 0, 0.2)",
           width: 930,
           color:"black",
           fontFamily:"Kaushan Script",
@@ -282,16 +283,18 @@ const AutoSuggestions = () => {
                     
                 }
               })
-       }}style={{transform:"translate(0px,0px)", width:"90px",
-                height:"60px",
+       }}style={{width:"80px",
+                height:"55px",
                 backgroundColor:"rgba(20, 30, 35, 1)",
-               transform:"translate(15px,-9px)",
+               transform:"translate(35px,-10px)",
                fontFamily:"Poppins",
                fontSize:"20px",
+               boxShadow: "0px 3px 12px black",
                color:"white"}}>Send</Button>
 
 
                
+      
       
         <div >
       {suggestions.length > 0 && (
@@ -299,7 +302,7 @@ const AutoSuggestions = () => {
           
           <div className="all-list" style={{
             width:930,
-            transform:"translate(15px,-20px)",
+            transform:"translate(-35px,-20px)",
             overflowY:"scroll",
             visibility:false,
             backgroundColor:"rgba(20, 47, 53, 0.4)", 
@@ -341,8 +344,59 @@ const AutoSuggestions = () => {
        
       )}
        </div>
-      
        
+      <div>
+        <div style={{height:"60px"}}></div>
+        {suggestions.length==0 &&
+        (
+        <div >
+          
+          <div>
+          <Typography
+        style={{
+          fontFamily:"Poppins",
+          fontSize:"30px",
+          color:"white",
+          float:"left",
+          transform:"translate(30px, 0px)"
+        }}>
+          Bounds : 
+        </Typography>
+          </div>
+        <div style={{          
+          transform: "translate(-250px, 0px)",}}>
+        <TextField
+        defaultValue="-inf"
+        style={{
+          fontSize:"30px",
+          backgroundColor:"rgba(0, 0, 0, 0.2)",
+          width: 100,
+          height:30, 
+          fontFamily:"Poppins",
+          display:"inline"
+        }}>
+        </TextField>
+        </div>
+        <div style={{          
+          // transform: "translate(-250px, 0px)",
+        }}>
+        <TextField
+        defaultValue="inf"
+        style={{
+          fontSize:"30px",
+          backgroundColor:"rgba(0, 0, 0, 0.2)",
+          width: 100,
+          height:30, 
+          fontFamily:"Poppins",
+          display:"inline",
+          float:"right"
+        }}>
+        </TextField>
+        </div>
+        </div>
+        )}
+        
+      </div>
     </div>
   );
 };
