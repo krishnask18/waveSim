@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend} from 'chart.js';
 import { Card } from '@mui/material';
-
+//import  from "checkString.js"
 // Register the necessary scales
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // Define the LineGraph component
+//console.log(compute(s))
 const LineGraph = () => {
   // State for user inputs
   const [xValues, setXValues] = useState('');
@@ -43,8 +44,8 @@ const LineGraph = () => {
           fill: false,
           borderColor: 'rgba(75,192,192,1)',
           borderWidth: 2,
-          pointBackgroundColor: 'rgba(75,192,192,1)',
-          pointRadius: 4,
+          pointBackgroundColor: 'rgba(75,192,192,0)',
+          pointRadius: 1,
         },
       ],
     };
