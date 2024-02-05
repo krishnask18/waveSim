@@ -14,6 +14,7 @@ function ContinuousTime()
           width="267px"
             bgim="linear-gradient(to bottom,rgba(120, 2, 6, 1), rgba(6, 17, 97,0.5)),url(../src/assets/ft.jpg)"
             title="Fourier Transform"
+            shadow="0px 10px 30px rgba(0, 0, 0, 1) "
             description={
               <div style={{width:"240px"}}>
                 <div>
@@ -35,6 +36,7 @@ function ContinuousTime()
           width="267px"
             bgim="linear-gradient(to bottom,rgba(122, 106, 85, 1), rgba(92, 68, 55, 0.8)),url(../src/assets/fs.jpg)"
             title="Fourier Series Visualization"
+         shadow=   "0px 10px 30px rgba(0, 0, 0, 1) "
             description={
               <div style={{width:"240px"}}>
                 <div>
@@ -55,6 +57,7 @@ function ContinuousTime()
           width="267px"
             bgim="linear-gradient(to bottom,rgba(103, 72, 110, 1), rgba(68, 15, 80, 0.5)),url(../src/assets/Lt.jpg)"
             title="Laplace Transform"
+            shadow="0px 10px 30px rgba(0, 0, 0, 1) "
             description={
               <div style={{width:"240px"}}>
                 <div>
@@ -75,6 +78,7 @@ function ContinuousTime()
           width="267px"
             bgim="linear-gradient(to bottom,rgba(60, 100, 69, 1), rgba(40, 50, 31, 0.5)),url(../src/assets/convlu.jpg)"
             title="Convolution Animation"
+            shadow="0px 10px 30px rgba(0, 0, 0, 1) "
             description={
               <div style={{width:"240px"}}>
                 <div>

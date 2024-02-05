@@ -345,8 +345,7 @@ const AutoSuggestions = () => {
       )}
        </div>
        
-      <div>
-        <div style={{height:"60px"}}></div>
+      <div style={{transform:"translate(0,60px)"}}>
         {suggestions.length==0 &&
         (
         <div >
@@ -357,23 +356,22 @@ const AutoSuggestions = () => {
           fontFamily:"Poppins",
           fontSize:"30px",
           color:"white",
-          float:"left",
-          transform:"translate(30px, 0px)"
+          transform:"translate(-400px, 0px)"
         }}>
           Bounds : 
         </Typography>
           </div>
         <div style={{          
-          transform: "translate(-250px, 0px)",}}>
+          transform: "translate(-100px, -50px)",}}>
         <TextField
         defaultValue="-inf"
         style={{
+          transform:"translate(-150px,0)",
           fontSize:"30px",
           backgroundColor:"rgba(0, 0, 0, 0.2)",
+          boxShadow: "0px 2px 5px black",
           width: 100,
-          height:30, 
           fontFamily:"Poppins",
-          display:"inline"
         }}>
         </TextField>
         </div>
@@ -383,13 +381,14 @@ const AutoSuggestions = () => {
         <TextField
         defaultValue="inf"
         style={{
+          transform:"translate(-100px,-106px)",
           fontSize:"30px",
           backgroundColor:"rgba(0, 0, 0, 0.2)",
           width: 100,
-          height:30, 
           fontFamily:"Poppins",
-          display:"inline",
-          float:"right"
+          boxShadow: "0px 2px 5px black",
+        
+          
         }}>
         </TextField>
         </div>

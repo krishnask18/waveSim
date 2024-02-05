@@ -14,6 +14,7 @@ function Cardcomp(props) {
         borderBottomLeftRadius: 20,
         borderTopRightRadius: 20,
         borderTopLeftRadius: 20,    
+        boxShadow: props.shadow,
         backgroundImage:
         props.bgim,
         objectFit:"cover",

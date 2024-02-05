@@ -27,6 +27,7 @@ function HomeCards() {
             title="Continuous Time Signals"
             cursor="pointer"
             line="visible"
+            shadow="0px 3px 12px black"
             description={
               <div style={{width:"270px"}}>
                 <div>
@@ -51,6 +52,7 @@ function HomeCards() {
             title="Digital Signal Processing"
             cursor="pointer"
             line="visible"
+            shadow="0px 3px 12px black"
             description={
               <div style={{width:"280px"}}>
                 <div>
@@ -74,6 +76,7 @@ function HomeCards() {
             title="System Analysis"
             cursor="pointer"
             line="visible"
+            shadow="0px 3px 12px black"
             description={
               <div style={{width:"270px"}}>
                 <div>
@@ -100,6 +103,7 @@ function HomeCards() {
             title="Digital Circuits Simulation"
             cursor="pointer"
             line="visible"
+            shadow="0px 3px 12px black"
             description={
               <div style={{width:"270px"}}>
                 <div>
