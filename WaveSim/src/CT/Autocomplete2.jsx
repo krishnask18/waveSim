@@ -1,98 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-
-// const AutoSuggestions = () => {
-//   const [inputValue, setInputValue] = useState('');
-//   const [currentLetter, setCurrentLetter] = useState('');
-//   const [suggestions, setSuggestions] = useState([]);
-//   const [highlightedIndex, setHighlightedIndex] = useState(-1);
-
-//   const allSuggestions = ['apple', 'banana', 'cherry', 'date', 'grape', 'ade'];
-
-//   const handleInputChange = (e) => {
-//     const value = e.target.value;
-//     setInputValue(value);
-
-//     // Extract the last letter from the input value
-//     const lastLetter = value;
-
-//     setCurrentLetter(lastLetter);
-
-//     // Check if the last input is a letter before suggesting
-//     if (/^[a-zA-Z]+$/.test(lastLetter)) {
-//       // Filter suggestions based on the letter
-//       const filteredSuggestions = allSuggestions.filter(suggestion =>
-//         suggestion.toLowerCase().startsWith(lastLetter.toLowerCase())
-//       );
-
-//       setSuggestions(filteredSuggestions);
-//       setHighlightedIndex(-1); // Reset highlighted index
-//     } else {
-//       setSuggestions([]);
-//     }
-//   };
-
-//   const handleSuggestionClick = (suggestion) => {
-//     setInputValue((prevValue) => {
-//       return prevValue + suggestion.substr(currentLetter.length);
-//     });
-
-//     setSuggestions([]); // Clear suggestions after selection
-//   };
-
-//   const handleKeyDown = (e) => {
-//     if (e.key === 'ArrowDown') {
-//       e.preventDefault();
-//       setHighlightedIndex((prevIndex) =>
-//         prevIndex < suggestions.length - 1 ? prevIndex + 1 : prevIndex
-//       );
-//       setInputValue(suggestions[prevIndex])
-//     } else if (e.key === 'ArrowUp') {
-//       e.preventDefault();
-//       setHighlightedIndex((prevIndex) =>
-//         prevIndex > 0 ? prevIndex - 1 : prevIndex
-//       );
-//     } else if (e.key === 'Enter' && highlightedIndex !== -1) {
-//       handleSuggestionClick(suggestions[highlightedIndex]);
-//     }
-//   };
-
-//   useEffect(() => {
-//     const handleArrowNavigation = (event) => {
-//       handleKeyDown(event);
-//     };
-
-//     window.addEventListener('keydown', handleArrowNavigation);
-
-//     return () => {
-//       window.removeEventListener('keydown', handleArrowNavigation);
-//     };
-//   }, [highlightedIndex]);
-
-//   return (
-//     <div>
-//       <input
-//         type="text"
-//         value={inputValue}
-//         onChange={handleInputChange}
-//         onKeyDown={handleKeyDown}
-//         placeholder="Type a word..."
-//       />
-//       <ul>
-//         {suggestions.map((suggestion, index) => (
-//           <li
-//             key={index}
-//             onClick={() => handleSuggestionClick(suggestion)}
-//             className={index === highlightedIndex ? 'highlighted' : ''}
-//           >
-//             {suggestion}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default AutoSuggestions;
 
 import { Button, TextField, Typography } from "@mui/material";
 import { color, style } from "@mui/system";
@@ -168,7 +73,13 @@ const AutoSuggestions = () => {
         }
         if (suggestion === "sum") {
           const words = prevValue.split(" ");
-          words[words.length - 1] = "\u03a3((i, 0, n), expr(t)) ";
+          words[words.length - 1] = "\u03a3((i, 0, n), expression) ";
+          return words.join(" ");
+        }
+
+        if (suggestion === "product") {
+          const words = prevValue.split(" ");
+          words[words.length - 1] = "\u220F((i, 0, n), expression) ";
           return words.join(" ");
         }
 
@@ -177,6 +88,8 @@ const AutoSuggestions = () => {
           words[words.length - 1] = "\u03C0(t) ";
           return words.join(" ");
         }
+
+        
         const words = prevValue.split(" ");
         words[words.length - 1] = suggestion + "(t) ";
         return words.join(" ");
@@ -266,8 +179,8 @@ const AutoSuggestions = () => {
       
         value={inputValue}
         onChange={handleInputChange}
-         onKeyDown={handleKeyDown}
-        placeholder="Type a word..."
+        onKeyDown={handleKeyDown}
+        placeholder="Enter an expression..."
         style={{
           boxShadow: "0px 2px 5px black",
           backgroundColor:"rgba(0, 0, 0, 0.2)",
@@ -280,7 +193,42 @@ const AutoSuggestions = () => {
       ><Typography style={{fontFamily:"Poppins"}}></Typography></TextField>
        <Button  onClick={()=>{
                // {ClassNames.drawOutput}
+
+               var str= inputValue;
+
+               for(let i=0; i<str.length; i++)
+               {
+                  if(str[i]==='\u03b4' )
+                  {
+                    str =str.slice(0, i)+"impulse"+str.slice(i+1, str.length);
+
+                  }
+                  else if(str[i]==='u' && str[i+1]==='(')
+                  {
+                    str =str.slice(0, i)+"step"+str.slice(i+1, str.length);
+                  }
+
+                  else if(str[i]==='\u03a3')
+                  {
+                    str =str.slice(0, i)+"sum"+str.slice(i+1, str.length);
+                  }
+
+                  else if(str[i]==='\u03C0')
+                  {
+                    str =str.slice(0, i)+"rect"+str.slice(i+1, str.length);
+                  }
+
+                  else if(str[i]==='\u220f')
+                  {
+                    str =str.slice(0, i)+"product"+str.slice(i+1, str.length);
+                  }
+
+               }
+
+               console.log(str);
               fetch("http://172.27.4.18:5000?expr"+inputValue,{
+
+                  
                 // body:JSON.stringify({
                 //   exprs
                 // })
@@ -290,7 +238,6 @@ const AutoSuggestions = () => {
                     setrecieved(true);
                     <h1>recieved!</h1>
                   }
-
               })
        }}style={{width:"80px",
                 height:"55px",
@@ -320,7 +267,9 @@ const AutoSuggestions = () => {
             borderBottomRightRadius: 20,
             borderBottomLeftRadius: 20,
             borderTopRightRadius: 20,
-            borderTopLeftRadius: 20,  
+            borderTopLeftRadius: 20,
+            
+            
         }}>
           
             {suggestions.map((suggestion, index) => (
