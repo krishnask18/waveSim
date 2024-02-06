@@ -98,6 +98,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import { color, style } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import "../index.css";
+import { ClassNames } from "@emotion/react";
 
 const AutoSuggestions = () => {
   const [inputValue, setInputValue] = useState("");
@@ -106,6 +107,7 @@ const AutoSuggestions = () => {
   const [currentWord, setCurrentWord] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const [expression,setExpression]=useState("");
+  const [recieved,setrecieved]=useState(false);
 
   const allSuggestions = [
     "impulse",
@@ -277,11 +279,18 @@ const AutoSuggestions = () => {
         
       ><Typography style={{fontFamily:"Poppins"}}></Typography></TextField>
        <Button  onClick={()=>{
-              fetch("",{
-                method:"POST",
-                body:{
-                    
-                }
+               // {ClassNames.drawOutput}
+              fetch("http://172.27.4.18:5000?expr"+inputValue,{
+                // body:JSON.stringify({
+                //   exprs
+                // })
+              }).then((data)=>{
+                  if(data===200)
+                  {
+                    setrecieved(true);
+                    <h1>recieved!</h1>
+                  }
+
               })
        }}style={{width:"80px",
                 height:"55px",
@@ -357,6 +366,7 @@ const AutoSuggestions = () => {
           fontSize:"30px",
           color:"white",
           transform:"translate(-400px, 0px)"
+
         }}>
           Bounds : 
         </Typography>
