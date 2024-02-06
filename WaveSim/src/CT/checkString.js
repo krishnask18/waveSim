@@ -6,10 +6,20 @@ function makeArr(t1=-1000, t2=1000, Ts=0.1){
         t_.push(i);
     }
 }
-makeArr(-10, 10, .5);
 
-function compute(expr){
-   var xt = []
+
+
+function compute(expr, t1, t2){
+    if(t1 === '-inf' || t2 === 'inf'){
+        t1 = -1000;
+        t2 = 1000;
+    }
+    else{
+        t1 = max(t1, -1000);
+        t2 = min(t2, 1000);
+    }
+    makeArr(t1, t2)
+    var xt = []
     for(let i = 0; i < t_.length; i++){
         xt.push(eval(replace(expr,"t",t_[i])));
     }
