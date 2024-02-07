@@ -280,16 +280,19 @@ const AutoSuggestions = () => {
       ><Typography style={{fontFamily:"Poppins"}}></Typography></TextField>
        <Button  onClick={()=>{
                // {ClassNames.drawOutput}
-              fetch("http://172.27.4.18:5000?expr"+inputValue,{
+              fetch("http://172.27.4.18:443?expr="+inputValue,{
+                mode: "cors",
+                headers: {
+                  "Access-Control-Allow-Origin":"*",
+                  "Content-Type": "application/json"
+                },
                 // body:JSON.stringify({
                 //   exprs
                 // })
-              }).then((data)=>{
-                  if(data===200)
-                  {
-                    setrecieved(true);
-                    <h1>recieved!</h1>
-                  }
+              }).then(async (data)=>{
+                  var txt = await data.text();
+                  console.log("Hi "+txt);
+                  setrecieved(true);
 
               })
        }}style={{width:"80px",
@@ -404,7 +407,21 @@ const AutoSuggestions = () => {
         </div>
         </div>
         )}
-        
+        {recieved && (
+          <div><Button  onClick={()=>{
+              setrecieved(false);
+            }}
+           style={{
+      // width:"80px",
+             height:"55px",
+             backgroundColor:"rgba(20, 30, 35, 1)",
+            transform:"translate(35px,-10px)",
+            fontFamily:"Poppins",
+            fontSize:"20px",
+            boxShadow: "0px 3px 12px black",
+            color:"white"}}>Show Plots</Button>
+          </div>
+        )}
       </div>
     </div>
   );
