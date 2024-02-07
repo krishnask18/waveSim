@@ -1,4 +1,3 @@
-
 import { Button, TextField, Typography } from "@mui/material";
 import { color, style } from "@mui/system";
 import React, { useState, useEffect } from "react";
@@ -11,8 +10,8 @@ const AutoSuggestions = () => {
   const [currentLetter, setCurrentLetter] = useState("");
   const [currentWord, setCurrentWord] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
-  const [expression,setExpression]=useState("");
-  const [recieved,setrecieved]=useState(false);
+  const [expression, setExpression] = useState("");
+  const [recieved, setrecieved] = useState(false);
 
   const allSuggestions = [
     "impulse",
@@ -31,8 +30,8 @@ const AutoSuggestions = () => {
     "pi",
     "abs",
     "periodic",
-    'sum',
-    'product'
+    "sum",
+    "product",
   ];
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -50,9 +49,8 @@ const AutoSuggestions = () => {
       suggestion.toLowerCase().includes(lastWord.toLowerCase())
     );
 
-   // console.log(filteredSuggestions);
+    // console.log(filteredSuggestions);
     setSuggestions(filteredSuggestions);
-  
   };
 
   console.log(suggestions);
@@ -89,7 +87,6 @@ const AutoSuggestions = () => {
           return words.join(" ");
         }
 
-        
         const words = prevValue.split(" ");
         words[words.length - 1] = suggestion + "(t) ";
         return words.join(" ");
@@ -120,46 +117,43 @@ const AutoSuggestions = () => {
   const handleKeyDown = (e) => {
     console.log(e.key);
 
-    if(highlightedIndex<suggestions.length)
-    {
-      if (e.key === "ArrowUp"&& highlightedIndex>0) {  
-        setHighlightedIndex(prevIndex=>prevIndex-1);     
-       // e.preventDefault();
-  
+    if (highlightedIndex < suggestions.length) {
+      if (e.key === "ArrowUp" && highlightedIndex > 0) {
+        setHighlightedIndex((prevIndex) => prevIndex - 1);
+        // e.preventDefault();
+
         //console.log("Down Press")
         // setHighlightedIndex((prevIndex) =>
         //   prevIndex < suggestions.length - 1 ? prevIndex + 1 : 0
         // );
-        
+
         // console.log(highlightedIndex + suggestions[highlightedIndex]);
         // handleSuggestionClick(suggestions[highlightedIndex]);
-        
-      } else if (e.key==="ArrowDown" && highlightedIndex<suggestions.length-1) {
-       
-        setHighlightedIndex(prevIndex=>prevIndex+1);     
-  
-       // e.preventDefault();
+      } else if (
+        e.key === "ArrowDown" &&
+        highlightedIndex < suggestions.length - 1
+      ) {
+        setHighlightedIndex((prevIndex) => prevIndex + 1);
+
+        // e.preventDefault();
         // //console.log("up  Press")
         // setHighlightedIndex((prevIndex) =>
         // prevIndex > 0 ? prevIndex - 1 : suggestions.length - 1
         // );
         // console.log(highlightedIndex + suggestions[highlightedIndex]);
         // handleSuggestionClick(suggestions[highlightedIndex]);
-      } else if (e.key === "Enter"&& highlightedIndex>=0) {
-        handleSuggestionClick(suggestions[highlightedIndex], true)
+      } else if (e.key === "Enter" && highlightedIndex >= 0) {
+        handleSuggestionClick(suggestions[highlightedIndex], true);
         //suggestions[highlightedIndex];
         // if (highlightedIndex !== -1) {
         //   console.log(highlightedIndex + suggestions[highlightedIndex])  ;
         //   handleSuggestionClick(suggestions[highlightedIndex], true);
         // }
       }
-    }
-    else
-    {
+    } else {
       setHighlightedIndex(-1);
     }
-  
-  }; 
+  };
 
   // useEffect(() => {
   //   const handleArrowNavigation = (event) => {
@@ -171,218 +165,190 @@ const AutoSuggestions = () => {
   //   return () => {
   //     window.removeEventListener("keydown", handleArrowNavigation);
   //   };
-  // }, [highlightedIndex]); 
+  // }, [highlightedIndex]);
 
   return (
-    <div >
+    <div>
       <TextField
-      
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder="Enter an expression..."
         style={{
           boxShadow: "0px 2px 5px black",
-          backgroundColor:"rgba(0, 0, 0, 0.2)",
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
           width: 930,
-          color:"black",
-          fontFamily:"Kaushan Script",
+          color: "black",
+          fontFamily: "Kaushan Script",
           transform: "translate(25px, -10px)",
         }}
-        
-      ><Typography style={{fontFamily:"Poppins"}}></Typography></TextField>
-       <Button  onClick={()=>{
-               // {ClassNames.drawOutput}
-<<<<<<< HEAD
-              fetch("http://172.27.4.18:443?expr="+inputValue,{
-                mode: "cors",
-                headers: {
-                  "Access-Control-Allow-Origin":"*",
-                  "Content-Type": "application/json"
-                },
-                // body:JSON.stringify({
-                //   exprs
-                // })
-              }).then(async (data)=>{
-                  var txt = await data.text();
-                  console.log("Hi "+txt);
-                  setrecieved(true);
+      >
+        <Typography style={{ fontFamily: "Poppins" }}></Typography>
+      </TextField>
+      <Button
+        onClick={() => {
+          // {ClassNames.drawOutput}
 
-=======
+          var str = inputValue;
 
-               var str= inputValue;
+          for (let i = 0; i < str.length; i++) {
+            if (str[i] === "\u03b4") {
+              str = str.slice(0, i) + "impulse" + str.slice(i + 1, str.length);
+            } else if (str[i] === "u" && str[i + 1] === "(") {
+              str = str.slice(0, i) + "step" + str.slice(i + 1, str.length);
+            } else if (str[i] === "\u03a3") {
+              str = str.slice(0, i) + "sum" + str.slice(i + 1, str.length);
+            } else if (str[i] === "\u03C0") {
+              str = str.slice(0, i) + "rect" + str.slice(i + 1, str.length);
+            } else if (str[i] === "\u220f") {
+              str = str.slice(0, i) + "product" + str.slice(i + 1, str.length);
+            }
+          }
+          fetch("http://172.27.4.18:443?expr=" + str, {
+            mode: "cors",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            }
+          }).then(async (data) => {
+            var txt = await data.text();
+            console.log("Hi " + txt);
+            setrecieved(true);
+          });
+        }}
+        style={{
+          width: "80px",
+          height: "55px",
+          backgroundColor: "rgba(20, 30, 35, 1)",
+          transform: "translate(35px,-10px)",
+          fontFamily: "Poppins",
+          fontSize: "20px",
+          boxShadow: "0px 3px 12px black",
+          color: "white",
+        }}
+      >
+        Send
+      </Button>
 
-               for(let i=0; i<str.length; i++)
-               {
-                  if(str[i]==='\u03b4' )
-                  {
-                    str =str.slice(0, i)+"impulse"+str.slice(i+1, str.length);
+      <div>
+        {suggestions.length > 0 && (
+          <ul>
+            <div
+              className="all-list"
+              style={{
+                width: 930,
+                transform: "translate(-35px,-20px)",
+                overflowY: "scroll",
+                visibility: false,
+                backgroundColor: "rgba(20, 47, 53, 0.4)",
+                boxShadow: "0px 3px 25px rgba(0, 0, 0, 1)",
+                height: "200px",
+                borderBottomRightRadius: 20,
+                borderBottomLeftRadius: 20,
+                borderTopRightRadius: 20,
+                borderTopLeftRadius: 20,
+              }}
+            >
+              {suggestions.map((suggestion, index) => (
+                <h4
+                  align="left"
+                  // style={{color:"white",border:""}}
 
+                  key={index}
+                  style={{
+                    color: "white",
+                    width: 870,
+                    transform: "translate(-3px,0)",
+                    backgroundColor: "",
+                  }}
+                  onClick={() => handleSuggestionClick(suggestion, true)}
+                  className={
+                    index === highlightedIndex
+                      ? "suggestion-list active"
+                      : "suggestion-list"
                   }
-                  else if(str[i]==='u' && str[i+1]==='(')
-                  {
-                    str =str.slice(0, i)+"step"+str.slice(i+1, str.length);
-                  }
+                >
+                  {" "}
+                  <div>{suggestion}</div>
+                </h4>
+              ))}
+            </div>
+          </ul>
+        )}
+      </div>
 
-                  else if(str[i]==='\u03a3')
-                  {
-                    str =str.slice(0, i)+"sum"+str.slice(i+1, str.length);
-                  }
-
-                  else if(str[i]==='\u03C0')
-                  {
-                    str =str.slice(0, i)+"rect"+str.slice(i+1, str.length);
-                  }
-
-                  else if(str[i]==='\u220f')
-                  {
-                    str =str.slice(0, i)+"product"+str.slice(i+1, str.length);
-                  }
-
-               }
-
-               console.log(str);
-              fetch("http://172.27.4.18:5000?expr"+inputValue,{
-
-                  
-                // body:JSON.stringify({
-                //   exprs
-                // })
-              }).then((data)=>{
-                  if(data===200)
-                  {
-                    setrecieved(true);
-                    <h1>recieved!</h1>
-                  }
->>>>>>> 9ad9197766266df15d519f9f0e13e4723bf20afb
-              })
-       }}style={{width:"80px",
-                height:"55px",
-                backgroundColor:"rgba(20, 30, 35, 1)",
-               transform:"translate(35px,-10px)",
-               fontFamily:"Poppins",
-               fontSize:"20px",
-               boxShadow: "0px 3px 12px black",
-               color:"white"}}>Send</Button>
-
-
-               
-      
-      
-        <div >
-      {suggestions.length > 0 && (
-        <ul >
-          
-          <div className="all-list" style={{
-            width:930,
-            transform:"translate(-35px,-20px)",
-            overflowY:"scroll",
-            visibility:false,
-            backgroundColor:"rgba(20, 47, 53, 0.4)", 
-            boxShadow: "0px 3px 25px rgba(0, 0, 0, 1)",
-            height:"200px",
-            borderBottomRightRadius: 20,
-            borderBottomLeftRadius: 20,
-            borderTopRightRadius: 20,
-            borderTopLeftRadius: 20,
-            
-            
-        }}>
-          
-            {suggestions.map((suggestion, index) => (
-              <h4 
-                align="left"
-                // style={{color:"white",border:""}}
-
-                key={index}
-                style={{
-                  color: "white",
-                  width: 870,
-                  transform:"translate(-3px,0)",
-                  backgroundColor: "",
-                
-
-                 }}
-                onClick={() => handleSuggestionClick(suggestion, true)}
-                
-
-                className={
-                  index === highlightedIndex ? "suggestion-list active": "suggestion-list"
-                }
-              >
-                {" "}
-                <div >{suggestion}</div>
-              </h4>
-            ))}
-          </div>
-        </ul>
-       
-      )}
-       </div>
-       
-      <div style={{transform:"translate(0,60px)"}}>
-        {suggestions.length==0 &&
-        (
-        <div >
-          
+      <div style={{ transform: "translate(0,60px)" }}>
+        {suggestions.length == 0 && (
           <div>
-          <Typography
-        style={{
-          fontFamily:"Poppins",
-          fontSize:"30px",
-          color:"white",
-          transform:"translate(-400px, 0px)"
-
-        }}>
-          Bounds : 
-        </Typography>
+            <div>
+              <Typography
+                style={{
+                  fontFamily: "Poppins",
+                  fontSize: "30px",
+                  color: "white",
+                  transform: "translate(-400px, 0px)",
+                }}
+              >
+                Bounds :
+              </Typography>
+            </div>
+            <div
+              style={{
+                transform: "translate(-100px, -50px)",
+              }}
+            >
+              <TextField
+                defaultValue="-inf"
+                style={{
+                  transform: "translate(-150px,0)",
+                  fontSize: "30px",
+                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0px 2px 5px black",
+                  width: 100,
+                  fontFamily: "Poppins",
+                }}
+              ></TextField>
+            </div>
+            <div
+              style={
+                {
+                  // transform: "translate(-250px, 0px)",
+                }
+              }
+            >
+              <TextField
+                defaultValue="inf"
+                style={{
+                  transform: "translate(-100px,-106px)",
+                  fontSize: "30px",
+                  backgroundColor: "rgba(0, 0, 0, 0.2)",
+                  width: 100,
+                  fontFamily: "Poppins",
+                  boxShadow: "0px 2px 5px black",
+                }}
+              ></TextField>
+            </div>
           </div>
-        <div style={{          
-          transform: "translate(-100px, -50px)",}}>
-        <TextField
-        defaultValue="-inf"
-        style={{
-          transform:"translate(-150px,0)",
-          fontSize:"30px",
-          backgroundColor:"rgba(0, 0, 0, 0.2)",
-          boxShadow: "0px 2px 5px black",
-          width: 100,
-          fontFamily:"Poppins",
-        }}>
-        </TextField>
-        </div>
-        <div style={{          
-          // transform: "translate(-250px, 0px)",
-        }}>
-        <TextField
-        defaultValue="inf"
-        style={{
-          transform:"translate(-100px,-106px)",
-          fontSize:"30px",
-          backgroundColor:"rgba(0, 0, 0, 0.2)",
-          width: 100,
-          fontFamily:"Poppins",
-          boxShadow: "0px 2px 5px black",
-        
-          
-        }}>
-        </TextField>
-        </div>
-        </div>
         )}
         {recieved && (
-          <div><Button  onClick={()=>{
-              setrecieved(false);
-            }}
-           style={{
-      // width:"80px",
-             height:"55px",
-             backgroundColor:"rgba(20, 30, 35, 1)",
-            transform:"translate(35px,-10px)",
-            fontFamily:"Poppins",
-            fontSize:"20px",
-            boxShadow: "0px 3px 12px black",
-            color:"white"}}>Show Plots</Button>
+          <div>
+            <Button
+              onClick={() => {
+                setrecieved(false);
+              }}
+              style={{
+                // width:"80px",
+                height: "55px",
+                backgroundColor: "rgba(20, 30, 35, 1)",
+                transform: "translate(35px,-10px)",
+                fontFamily: "Poppins",
+                fontSize: "20px",
+                boxShadow: "0px 3px 12px black",
+                color: "white",
+              }}
+            >
+              Show Plots
+            </Button>
           </div>
         )}
       </div>
