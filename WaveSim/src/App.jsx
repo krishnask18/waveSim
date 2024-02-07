@@ -30,7 +30,7 @@ function App() {
               <Route path="/continuousTime" element={<ContinuousTime/>}/>
               <Route path="/continuousTime/Ctft" element={<FourierTransform/>}/>
               <Route path="/continuousTime/Ctft/graph2" element={<LineGraph/>}/>
-              <Route path="/continuousTime/Ctft/Graph" element ={<DesmosComponent/>}/>
+             
             </Routes>
         </Router>
         
