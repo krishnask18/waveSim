@@ -23,7 +23,7 @@ function HomeCards() {
                 }}>
           <Cardcomp
             width="300px" 
-            bgim="linear-gradient(to bottom,rgba(79, 112, 65, 1), rgba(55, 78, 49, 0.5)),url(../src/assets/CT_bgi.jpg)"
+            bgim="linear-gradient(to bottom,rgba(79, 112, 65, 1), rgba(55, 78, 49, 0.5)),url(./src/assets/CT_bgi.jpg)"
             title="Continuous Time Signals"
             cursor="pointer"
             line="visible"
