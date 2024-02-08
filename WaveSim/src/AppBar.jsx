@@ -19,7 +19,11 @@ function ButtonAppBar() {
         <Toolbar>
           <img src={logo2} width={"64"} height={"64"} />
           <img src={logo} height={"64"} />
+          <Button  style={{color:"white",fontSize:"20px" ,"transform":"translate(1000px,2px)"}}onClick={()=>{
+          window.location="/combinedAll";
+        }}>Start</Button>
         </Toolbar>
+        
       </AppBar>
     </div>
   );    
