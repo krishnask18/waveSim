@@ -22,10 +22,10 @@ function App() {
 
   return (
     
-        <Router>
+        <Router basename="/combinedAll">
             <ButtonAppBar/>
             <Routes>
-              <Route path="/combinedAll" element={<HomeCards/>}/>
+              <Route exact path="/combinedAll" element={<HomeCards/>}/>
               <Route path="/continuousTime" element={<ContinuousTime/>}/>
               <Route path="/continuousTime/Ctft" element={<FourierTransform/>}/>
               <Route path="/continuousTime/Ctft/Graph" element ={<LineGraph/>}/>
