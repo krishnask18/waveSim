@@ -204,7 +204,7 @@ const AutoSuggestions = () => {
               str = str.slice(0, i) + "product" + str.slice(i + 1, str.length);
             }
           }
-          fetch("http://172.27.4.18:443?expr=" +encodeURIComponent(str) , {
+          fetch("https://wave-sim-backend2.vercel.app/?expr=" +encodeURIComponent(str) , {
             mode: "cors",
             headers: {
               "Access-Control-Allow-Origin": "*",
