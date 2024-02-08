@@ -21,11 +21,11 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    
-        <Router basename="/combinedAll">
+      
+        <Router >
             <ButtonAppBar/>
             <Routes>
-              <Route exact path="/combinedAll" element={<HomeCards/>}/>
+              <Route path="/combinedAll" element={<HomeCards/>}/>
               <Route path="/continuousTime" element={<ContinuousTime/>}/>
               <Route path="/continuousTime/Ctft" element={<FourierTransform/>}/>
               <Route path="/continuousTime/Ctft/Graph" element ={<LineGraph/>}/>
