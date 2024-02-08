@@ -204,11 +204,11 @@ const AutoSuggestions = () => {
               str = str.slice(0, i) + "product" + str.slice(i + 1, str.length);
             }
           }
-          fetch("https://wave-sim-backend2.vercel.app/?expr=" +encodeURIComponent(str) , {
+          fetch("https://wave-sim-backend2.vercel.app?expr=" +encodeURIComponent(str) , {
             mode:  "no-cors",
             headers: {
               
-              "Content-Type": "application/json",
+             
             }
           }).then(async (data) => {
             var txt = await data.text();
