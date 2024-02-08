@@ -205,9 +205,9 @@ const AutoSuggestions = () => {
             }
           }
           fetch("https://wave-sim-backend2.vercel.app/?expr=" +encodeURIComponent(str) , {
-            mode: "cors",
+            mode:  "no-cors",
             headers: {
-              "Access-Control-Allow-Origin": "*",
+              
               "Content-Type": "application/json",
             }
           }).then(async (data) => {
