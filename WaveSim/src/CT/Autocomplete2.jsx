@@ -24,7 +24,7 @@ const AutoSuggestions = () => {
     "ramp",
     "step",
     "exp",
-    "ea",
+    "e",
     "sgn",
     "pow",
     "pi",
